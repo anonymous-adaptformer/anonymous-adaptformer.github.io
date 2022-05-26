@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AdaptFormer for Efficient Vision Transformers Fine-tuning.">
+  <meta name="keywords" content="Transformers, Fine-tuning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdaptFormer: Adapting Vision Transformers for Scalable Visual Recognition</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AdaptFormer: Adapting Vision Transformers for Scalable Visual Recognition</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/images/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Adapt Vision Transformers to downstream tasks by fine-tuning less than 2% parameters.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!--##################################   Abstract   ##################################-->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Although the pre-trained Vision Transformers (ViTs) achieved great success in computer vision,
+            adapting a ViT to various image and video tasks is challenging because of its heavy computation and storage burdens,
+            where each model needs to be independently and comprehensively fine-tuned to different tasks, limiting its transferability in different domains. 
+          </p>
+          <p>
+            To address this challenge, we propose an effective adaptation approach for Transformer, namely AdaptFormer, 
+            which can adapt the pre-trained ViTs into many different image and video tasks efficiently.
+            It possesses several benefits more appealing than prior arts.
+          </p>
+          <p>
+            Firstly, AdaptFormer introduces lightweight modules that only adds less than 2% extra parameters to a ViT,
+            while it is able to increase the ViT’s transferability without updating its original pre-trained parameters,
+            significantly outperforming the existing 100% fully fine-tuned models on action recognition benchmarks. 
+            Secondly, it can be plug-andplay in different Transformers and scalable to many visual tasks. 
+            Thirdly, extensive experiments on five image and video datasets show that AdaptFormer largely
+            improves ViTs in the target domains. For example, when updating just 1.5% extra
+            parameters, it achieves about 10% and 19% relative improvement compared to the
+            fully fine-tuned models on Something-Something v2 and HMDB51, respectively.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+
+  </div>
+</section>
+
+
+<!--##################################   Visualization   ##################################-->
+
+<section class="section" id="Visualization">
+  <div class="container is-max-desktop content">
+    <h2 style="text-align: center;" class="title is-3">Visualization</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="project">
+        <figure>
+          <img src="./static/images/tsne_sth_linear-1.png" alt="light_and_fark"  style="width:100%">
+          <figcaption class ="podpis">Linear Probe (<font color="red"> 29.23%</font>)</figcaption>
+        </figure>
+      </div>
+      <div class="project">
+        <figure>
+          <img src="./static/images/tsne_sth_vpt-1.png" alt="light_and_fark"  style="width:100%">
+          <figcaption class ="podpis">VPT (<font color="red"> 43.73%</font>)</figcaption>
+        </figure>
+      </div>
+      <div class="project">
+        <figure>
+          <img src="./static/images/tsne_sth_full-1.png" alt="light_and_fark"  style="width:100%">
+          <figcaption class ="podpis">Full Fine-tune (<font color="red"> 53.97%</font>)</figcaption>
+        </figure>
+      </div>
+      <div class="project">
+        <figure>
+          <img src="./static/images/tsne_sth_ada-1.png" alt="light_and_fark"  style="width:100%">
+          <figcaption class ="podpis">AdaptFormer (<font color="red"> 59.02%</font>)</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <p>Figure 1. t-SNE visualizations on SSv2 val dataset. The top-1 accuracy is reported in red.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{adaptformer,
+      title={AdaptFormer: Adapting Vision Transformers for Scalable Visual Recognition},
+      author={anonymous author},
+      journal={submission},
+      year={2022}
+}</code></pre>
+  </div>
+</section>
+
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <h3 class="title">Acknowledgements</h3>
+          <p>
+            The website template was borrowed from <a href="https://nerfies.github.io/">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
